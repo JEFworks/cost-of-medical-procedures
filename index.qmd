@@ -1,5 +1,5 @@
 ```{ojs}
-data = FileAttachment("Carefirst-PPO_negotiated_price_range.csv.gz").csv({ typed: true })
+data = FileAttachment("Carefirst-PPO_negotiated_price_range.csv").csv({ typed: true })
 data
 ```
 
