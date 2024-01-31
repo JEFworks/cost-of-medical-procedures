@@ -3,42 +3,32 @@ data = FileAttachment("Carefirst-PPO_negotiated_price_range.csv.gz").csv({ typed
 ```
 
 ```{ojs}
-viewof bill_length_min = Inputs.range(
-  [32, 50], 
-  {value: 35, step: 1, label: "Bill length (min):"}
+viewof maxprice = Inputs.range(
+  [0, 100000], 
+  {value: 35, step: 10, label: "Max negotiated price:"}
 )
-viewof islands = Inputs.checkbox(
-  ["Torgersen", "Biscoe", "Dream"], 
-  { value: ["Torgersen", "Biscoe"], 
-    label: "Islands:"
-  }
+viewof minprice = Inputs.range(
+  [0, 100000], 
+  {value: 0, step: 10, label: "Min negotiated price:"}
 )
 ```
 
 ```{ojs}
-filtered = data.filter(function(penguin) {
-  return bill_length_min < penguin.bill_length_mm &&
-         islands.includes(penguin.island);
+filtered = data.filter(function(procedure) {
+  return maxprice > procedure.max_negotiated_price & minprice < procedure.min_negotiated_price
 })
 ```
 
 ```{ojs}
-Plot.rectY(filtered, 
-  Plot.binX(
-    {y: "count"}, 
-    {x: "body_mass_g", fill: "species", thresholds: 20}
-  ))
-  .plot({
-    facet: {
-      data: filtered,
-      x: "sex",
-      y: "species",
-      marginRight: 80
-    },
-    marks: [
-      Plot.frame(),
-    ]
-  }
-)
+Plot.plot({
+  inset: 8,
+  grid: true,
+  color: {
+    legend: true,
+  },
+  marks: [
+    Plot.dot(filtered, {x: "min_negotiated_price", y: "max_negotiated_price"})
+  ]
+})
 ```
 
