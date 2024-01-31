@@ -1,5 +1,6 @@
 ```{ojs}
 data = FileAttachment("Carefirst-PPO_negotiated_price_range.csv.gz").csv({ typed: true })
+data
 ```
 
 ```{ojs}
@@ -23,7 +24,8 @@ Plot.plot({
     legend: true,
   },
   marks: [
-    Plot.dot(filtered, {x: "min_negotiated_price", y: "max_negotiated_price"})
+    Plot.dot(filtered, {x: "min_negotiated_price", y: "max_negotiated_price"}),
+    Plot.dot(filtered, {x: "min_negotiated_price", y: "max_negotiated_price", text:"name"})    
   ]
 })
 ```
