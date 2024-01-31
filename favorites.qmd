@@ -5,23 +5,19 @@ data = FileAttachment("Carefirst-PPO_negotiated_price_range.csv.gz").csv({ typed
 ```{ojs}
 viewof maxprice = Inputs.range(
   [0, 100000], 
-  {value: 35, step: 10, label: "Max negotiated price:"}
-)
-viewof minprice = Inputs.range(
-  [0, 100000], 
-  {value: 0, step: 10, label: "Min negotiated price:"}
+  {value: 5000, step: 100, label: "Max negotiated price:"}
 )
 ```
 
 ```{ojs}
 filtered = data.filter(function(procedure) {
-  return maxprice > procedure.max_negotiated_price & minprice < procedure.min_negotiated_price
+  return procedure.max_negotiated_price < maxprice
 })
 ```
 
 ```{ojs}
 Plot.plot({
-  inset: 8,
+  inset: 0,
   grid: true,
   color: {
     legend: true,
