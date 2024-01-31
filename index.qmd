@@ -5,7 +5,7 @@ data
 
 ```{ojs}
 viewof maxprice = Inputs.range(
-  [0, 100000], 
+  [0, 1000000], 
   {value: 5000, step: 10, label: "Max negotiated price:"}
 )
 ```
@@ -18,14 +18,20 @@ filtered = data.filter(function(procedure) {
 
 ```{ojs}
 Plot.plot({
-  inset: 0,
+  inset: 10,  
+  x: {type: "log"},
+  y: {type: "log"},
   grid: true,
   color: {
     legend: true,
   },
   marks: [
-    Plot.dot(filtered, {x: "min_negotiated_price", y: "max_negotiated_price"}),
-    Plot.text(filtered, {x: "min_negotiated_price", y: "max_negotiated_price", text:"name"})    
+    Plot.dot(filtered, {
+ 		       y: "max_negotiated_price",
+   		       x: "min_negotiated_price",
+		       title: (d) => `${d.name} \nmax price: $${d.max_negotiated_price} \nmin price: $${d.min_negotiated_price}`,
+		       tip: true
+		       })
   ]
 })
 ```
