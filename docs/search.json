@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "favorites.html",
-    "href": "favorites.html",
-    "title": "Assistant to the Regional Data Manager",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "data = FileAttachment(\"Carefirst-PPO_negotiated_price_range.csv.gz\").csv({ typed: true })\n\n\n\n\n\n\n\nviewof maxprice = Inputs.range(\n  [0, 100000], \n  {value: 5000, step: 100, label: \"Max negotiated price:\"}\n)\n\n\n\n\n\n\n\nfiltered = data.filter(function(procedure) {\n  return procedure.max_negotiated_price &lt; maxprice\n})\n\n\n\n\n\n\n\nPlot.plot({\n  inset: 0,\n  grid: true,\n  color: {\n    legend: true,\n  },\n  marks: [\n    Plot.dot(filtered, {x: \"min_negotiated_price\", y: \"max_negotiated_price\"})\n  ]\n})"
+    "text": "About\nCarefirst PPO negotiated price range"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "J.T. Smith",
+    "title": "Cost of Medical Procedures",
     "section": "",
-    "text": "Email\n  \n  \n    \n     GitHub\n  \n  \n    \n     YouTube\n  \n  \n    \n     resume\n  \n\n  \n  \nI love my dogs. Here is a picture of my dogs.\nIf you like dogs too, then you should definitely hire me for a highly paid position."
+    "text": "data = FileAttachment(\"Carefirst-PPO_negotiated_price_range.csv.gz\").csv({ typed: true })\n\n\n\n\n\n\n\nviewof maxprice = Inputs.range(\n  [0, 100000], \n  {value: 5000, step: 100, label: \"Max negotiated price:\"}\n)\n\n\n\n\n\n\n\nfiltered = data.filter(function(procedure) {\n  return procedure.max_negotiated_price &lt; maxprice\n})\n\n\n\n\n\n\n\nPlot.plot({\n  inset: 0,\n  grid: true,\n  color: {\n    legend: true,\n  },\n  marks: [\n    Plot.dot(filtered, {x: \"min_negotiated_price\", y: \"max_negotiated_price\"})\n  ]\n})"
   }
 ]

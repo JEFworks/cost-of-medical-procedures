@@ -3,12 +3,14 @@ project:
   output-dir: docs
 
 website:
-  title: "Assistant to the Regional Data Manager"
+  title: "Cost of Medical Procedures"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - favorites.qmd
+      - href: about.qmd
+        text: About
+
 format:
   html:
     theme: sandstone
